@@ -1,0 +1,112 @@
+$layout-breakout-small: 320px;
+$layout-breakout-med: 480px;
+$layout-breakout-large: 1024px;
+$light: #ade2adf3;
+$dark: #0f2905f7;
+@font-face {
+  font-family: columbia;
+  src: url("../fonts/columbia.ttf");
+}
+
+.diary-date {
+  z-index: 10;
+  left: 0;
+  right:0;
+  width:80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: fixed;
+  overflow-y: scroll;
+  background-color: $light;
+  color: $dark;
+
+  @media(min-width:$layout-breakout-small) {
+    height:fit-content;
+    font-size: 50px;
+    top:300px;
+  }
+
+  @media(min-width: $layout-breakout-large) {
+    height: 75%;
+    top: 120px;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    width:100%;
+    text-align: center;
+    font-family:columbia;
+    @media(min-width:$layout-breakout-small) {
+      font-size: 60px;
+    }
+    @media(min-width: $layout-breakout-large) {
+      font-size: 35px;
+    }
+  }
+
+  #diary-close {
+    position: relative;
+    top: 10px;
+
+    @media (min-width:$layout-breakout-small) {
+      left: 90%;
+    }
+
+    @media(min-width: $layout-breakout-large) {
+      left: 95%;
+    }
+  }
+  
+  label {
+    @media(min-width: $layout-breakout-small) {
+      font-size: 45px;
+    }
+    @media(min-width: $layout-breakout-large) {
+      font-size: 25px;
+    }
+  }
+
+  .date-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    input[type=checkbox] {
+      @media(min-width: $layout-breakout-small) {
+        height:40px;
+        width:40px;
+      }
+      @media(min-width: $layout-breakout-large) {
+        height:auto;
+        width:auto;
+      }
+    }
+
+    button.add, .confirm-icon {
+      border: none;
+      color: inherit;
+      background-color: inherit;    
+
+      @media(min-width: $layout-breakout-small) {
+        height:60px;
+        width:60px;
+      }
+
+      @media(min-width: $layout-breakout-large) {
+        height:30px;
+        width:30px;
+      }
+    }
+  }
+
+  .option-label {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    background-color: $dark;
+    color: $light;
+    
+  }
+}

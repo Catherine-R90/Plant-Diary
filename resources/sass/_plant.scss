@@ -1,0 +1,151 @@
+$layout-breakout-small: 320px;
+$layout-breakout-med: 480px;
+$layout-breakout-large: 1024px;
+@font-face {
+    font-family: columbia;
+    src: url("../fonts/columbia.ttf");
+}
+
+.plant {
+    width:100%;
+    margin: 10px;
+
+    .plant-detail {
+        z-index: 10;
+        position: fixed;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: #081603fa;
+        color:#adda9e;
+        overflow-y: scroll;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        @media(min-width:$layout-breakout-small) {
+            top: 300px;
+            height: 80%;
+        }
+
+        @media(min-width: $layout-breakout-large) {
+            top: 120px;
+            height:75%;
+        }
+
+        button.close {
+            border:none;
+            background-color: inherit;
+            color:inherit;
+    
+            @media(min-width: $layout-breakout-small) {
+                position: absolute;
+                right: 25px;
+                top: 25px;
+            }
+        }
+
+        h1 {
+            width: 100%;
+            font-family: columbia;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            @media(min-width:$layout-breakout-small) {
+                margin-top: 25px;
+                font-size: 100px;
+                margin-top: 10px;
+            }
+            @media(min-width:$layout-breakout-large) {
+                font-size: 45px;
+            }
+        }
+
+        .plant-btn-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+
+            .plant-icon {
+                margin-left: 10px;
+
+                @media(min-width:$layout-breakout-small) {
+                    height: 50px;
+                }
+
+                @media(min-width: $layout-breakout-large) {
+                    height: 30px;
+                }
+            }
+
+            button {
+                margin: 5px;
+                color: #adda9e;
+                background-color: inherit;
+                border: none;
+                
+                @media(min-width:$layout-breakout-small) {
+                    padding: 5px;
+                    font-size: 60px;
+                }
+
+                @media(min-width: $layout-breakout-large) {
+                    font-size: 35px;
+                }
+            }
+        }
+
+        .care-diary, .plant-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plant-info {
+            .plant-title {
+                display: block;
+            }
+
+            @media(min-width: $layout-breakout-small) {
+                font-size: 50px;
+                li {
+                    margin-top: 30px;
+                }
+            }
+
+            @media(min-width: $layout-breakout-large) {
+                font-size: 25px;
+            }
+        }
+
+        .care-diary {
+            form {
+                text-align: center;
+                @media(min-width:$layout-breakout-small) {
+                    font-size: 70px;
+                }
+
+                @media(min-width: $layout-breakout-large) {
+                    font-size: 35px;
+                }
+
+                input[type=date] {
+                    display:block;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    @media(min-width:$layout-breakout-small) {
+                        font-size: 40px;
+                    }
+
+                    @media(min-width: $layout-breakout-large) {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+$layout-breakout-small: 320px;
+$layout-breakout-med: 480px;
+$layout-breakout-large: 1024px;
+$light: #c2ffc2f3;
+$dark: #081603f7;
+
+.form-container {
+    width: 100%;
+    .form {
+        background-color: $dark;
+        color: $light;
+        z-index: 10;
+        position: fixed;
+        overflow-y: scroll;
+        
+        @media(min-width:$layout-breakout-large){
+            top: 125px;
+            border: 1px solid #c2ffc2;
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        @media(min-width:$layout-breakout-small) and (max-width:$layout-breakout-med) {
+            left:0;
+            right:0;
+            top:300px;
+            width: 80%;
+            height: 70%;
+            margin-left: 10%;
+            margin-right: 10%;
+            overflow-y: scroll;
+
+        }
+
+        #form-close {
+            height: 50px;
+            width: 50px;
+        }
+
+        input[type=text] {
+            margin: 10px;
+            @media(min-width:$layout-breakout-small) and (max-width: $layout-breakout-med) {
+                width: 80%;
+                height: 55px;
+                font-size: 45px;
+            }
+        }
+
+        .search-cancel{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            background-color: $dark;
+            color: $light;
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            font-weight: normal;
+            border: none;
+            background-color: inherit;
+            color: inherit;
+            margin: 5px;
+            padding: 5px;
+
+            @media(min-width:$layout-breakout-small) {
+                font-size: 50px;
+            }
+
+            @media(min-width: $layout-breakout-large){
+                font-size: 25px;
+            }
+        }
+
+        .results {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .leaf-icon {
+                color:$light;
+
+                @media(min-width: $layout-breakout-small) {
+                    height:30px;
+                    width: 30px;
+                }
+
+                @media(min-width: $layout-breakout-large) {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+        }
+    }
+}
