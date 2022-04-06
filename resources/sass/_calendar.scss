@@ -1,0 +1,197 @@
+$layout-breakout-small: 320px;
+$layout-breakout-med: 480px;
+$layout-breakout-large: 1024px;
+$light: #c2ffc2f3;
+$dark: #081603f7;
+@font-face {
+  font-family: columbia;
+  src: url("../fonts/columbia.ttf");
+}
+
+@media(min-width: $layout-breakout-small) {
+  .calendar-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 90%;
+  }    
+}
+
+.calendar {
+  padding: 0;
+  margin: 5px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark;
+  color: $light;
+
+  @media(min-width:$layout-breakout-small) {
+    font-size: 50px;
+  }
+
+  @media(min-width: $layout-breakout-large) {
+    width: 45%; 
+    font-size: 35px;
+  }
+
+  button.close {
+    @media (min-width:$layout-breakout-small) {
+      position: absolute;
+      top: 340px;
+      right: 60px;
+    }
+    @media(min-width: $layout-breakout-large) {
+      position: relative;
+      top: 10px;
+      left: 380px;
+    }
+  }
+
+  #current-date {
+    font-family: columbia;
+    text-align: center;
+    padding:0;
+    @media(min-width:$layout-breakout-small) and (max-width: $layout-breakout-med) {
+      font-size: 80px;
+      margin: 20px 0px 20px 0px;
+    }
+    @media(min-width: $layout-breakout-large) {
+      font-size: 30px;
+      margin: 10px 0px 10px 0px;
+    }
+  }
+
+  .cal-btns {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      background-color: inherit;
+      color:inherit;
+      
+      @media(min-width:$layout-breakout-small) {
+        padding: 10px;
+        font-size: 50px;
+        border-left: 5px solid $light;
+        border-top: 5px solid $light;
+        border-right: none;
+        border-bottom: none;
+        border-radius: 2%;
+      }
+
+      @media(min-width: $layout-breakout-large) {
+        font-size: 20px;
+        border-left: 1px solid $light;
+        border-top: 1px solid $light;
+        border-bottom: 0.5px solid $light;
+        border-right: 0.5px solid $light;
+        border-radius: 2%;
+      }
+    }
+  }
+
+  .year, .month {
+    h3 {
+      @media(min-width:$layout-breakout-small) {
+        margin: 20px;
+        font-size: 50px;
+      }
+      @media(min-width: $layout-breakout-large) {
+        font-size: 25px;
+        margin: 10px;
+      }
+    }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+    padding: 0;
+    margin: 0;
+  }
+
+  .date-group {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media(min-width: $layout-breakout-small) and (max-width:$layout-breakout-med){
+      margin-top: 30px;
+    }
+    @media(min-width:$layout-breakout-small) {
+      margin-top: 15px;
+    }
+    table {
+      display: flex;
+      justify-content: space-evenly;
+      align-items:flex-start;
+      flex-direction: row;
+      flex-wrap:wrap;
+      @media(min-width:$layout-breakout-small) {
+        height: 80%;
+        width: 100%;
+      }
+      tbody {
+        tr {
+          td {
+            .date {
+              .date-btn {
+                border: 1px solid $dark;
+                text-align: center;
+
+                @media(min-width:$layout-breakout-small) {
+                  line-height: 70px;
+                  height: 70px;
+                  width: 70px;
+                  font-size: 50px;
+                }
+
+                @media(min-width: $layout-breakout-large) {
+                  line-height: 30px;
+                  height: 30px;
+                  width: 30px;
+                  font-size: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    #not-today {
+      background: $light;
+      color: $dark;
+    }
+    #today {
+      background: $dark;
+      color: $light;
+    }
+  }
+
+  .calendar-list {
+    @media(min-width: $layout-breakout-large) {
+      font-size: 15px;
+    }
+  }
+
+  // .watered-date button {
+  //   background-color: rgb(72, 72, 236);
+  // }
+  // .fertilized-date button {
+  //   background-color: rgb(73, 37, 13);
+  //   color: beige;
+  // }
+  // .watered-fertilized-date button {
+  //   background: linear-gradient(
+  //     to right,
+  //     rgb(72, 72, 236) 0%,
+  //     rgb(72, 72, 236) 50%,
+  //     rgb(73, 37, 13) 50%,
+  //     rgb(73, 37, 13) 100%
+  //   );
+  // }
+}
