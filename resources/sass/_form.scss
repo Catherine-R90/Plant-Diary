@@ -1,50 +1,49 @@
 $layout-breakout-small: 320px;
-$layout-breakout-med: 480px;
-$layout-breakout-large: 1024px;
+$layout-breakout-med: 768px;
+$layout-breakout-large: 992px;
 $light: #c2ffc2f3;
 $dark: #081603f7;
 
 .form-container {
     width: 100%;
+    margin: 0;
+    padding: 0;
+    
     .form {
         background-color: $dark;
         color: $light;
         z-index: 10;
         position: fixed;
         overflow-y: scroll;
-        
-        @media(min-width:$layout-breakout-large){
-            top: 125px;
-            border: 1px solid #c2ffc2;
-            width: 80%;
-            margin-left: 10%;
-            margin-right: 10%;
-        }
+        height: 80%;
+        top: 125px; 
+        left:0;
+        right:0;
+        border: 1px solid #c2ffc2;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
 
-        @media(min-width:$layout-breakout-small) and (max-width:$layout-breakout-med) {
-            left:0;
-            right:0;
-            top:300px;
-            width: 80%;
-            height: 70%;
-            margin-left: 10%;
-            margin-right: 10%;
-            overflow-y: scroll;
-
+        @media(max-width:$layout-breakout-large){
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
         }
 
         #form-close {
-            height: 50px;
-            width: 50px;
+            top: 10px;
+            left: 90%;
+
+            @media(max-width:$layout-breakout-large){
+                left: 85%
+            }
         }
 
         input[type=text] {
             margin: 10px;
-            @media(min-width:$layout-breakout-small) and (max-width: $layout-breakout-med) {
-                width: 80%;
-                height: 55px;
-                font-size: 45px;
-            }
+            width: 80%;
+            height: 30px;
+            font-size: 25px;
         }
 
         .search-cancel{
@@ -70,14 +69,7 @@ $dark: #081603f7;
             color: inherit;
             margin: 5px;
             padding: 5px;
-
-            @media(min-width:$layout-breakout-small) {
-                font-size: 50px;
-            }
-
-            @media(min-width: $layout-breakout-large){
-                font-size: 25px;
-            }
+            font-size: 25px;
         }
 
         .results {

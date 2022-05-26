@@ -15,8 +15,8 @@ class ApiPlantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fetchAll()
-    {
+
+    public function fetchAll() {
         $plants = Plant::all();
         
         $collection = [];
@@ -25,6 +25,12 @@ class ApiPlantController extends Controller
         }
 
         return json_encode($collection);
+    }
+
+    public function fetchOne($id){
+        $plant = Plant::where('id' === $id);
+        $plant->jsonSerialize();
+        return json_encode($plant);
     }
 
     public function fetchOwnedPlants() {
@@ -61,6 +67,13 @@ class ApiPlantController extends Controller
     public function disownPlant($id) {
         $plant = OwnedPlant::where('plant_id', $id);
         $plant->delete();
+    }
+
+    public function clearCalendar() {
+        $calendar = Calendar::all();
+        foreach($calendar as $cal) {
+            $cal->delete();
+        }
     }
 
     public function careDiary(Request $request) {
