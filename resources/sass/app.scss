@@ -1,0 +1,126 @@
+@use "plant_index";
+@use "search";
+@use "calendar";
+@use "form";
+@use "plant";
+@use "diary-date";
+
+$layout-breakout-small: 320px;
+$layout-breakout-med: 480px;
+$layout-breakout-large: 1024px;
+@font-face {
+    font-family: 'bodoni';
+    src: url("../fonts/BodoniflfRoman-vmAD.ttf") format('truetype');
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: bodoni;
+
+    @media(min-width:$layout-breakout-large) {
+        overflow-y: hidden;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .app{
+        height: fit-content;
+        width: 100vw;
+        padding:0;
+        margin:0;
+    }
+
+    .inner-app{
+        @media(min-width: $layout-breakout-large){
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:bottom;
+
+    @media(min-width: $layout-breakout-small) {
+        background-image: url('/images/mobile-background.png');
+    }
+
+    @media (min-width: $layout-breakout-large) {
+        background-image: url('/images/background.png');
+	}
+
+    button {
+        font-family: bodoni;
+    }
+
+    button.confirm {
+        border:none;
+        background:inherit;
+        color:inherit;
+
+        .confirm-icon {
+            @media(min-width:$layout-breakout-small) {
+                height: 80px;
+            }
+            @media(min-width: $layout-breakout-large) {
+                height: 35px;
+            }
+        }
+    }
+    
+    button.close {
+        border: none;
+        background-color: inherit;
+        color: inherit;
+        .close-icon {
+            @media(min-width:$layout-breakout-small) {
+                height: 60px;
+                width: 60px;
+            }
+            @media(min-width:$layout-breakout-large) {
+                height: 30px;
+            }
+        }
+    }
+
+    nav {
+        #logo {
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            img {  
+                @media(min-width: $layout-breakout-small) {
+                    height: 300px;
+                }
+                @media (min-width: $layout-breakout-large) {
+                    height: 100px;
+                }
+            }
+        } 
+    }
+    
+    .index-button {
+        border: none;
+        background-color: rgba(101, 157, 101, 0.193);
+        color:rgb(10, 16, 10);
+        width: 100%;
+        
+        @media(min-width: $layout-breakout-small) {
+            font-size: 90px;
+            margin-top: 20px;
+        }
+        @media(min-width:$layout-breakout-large) {
+            font-size: 50px;
+        }
+    }
+}
+
