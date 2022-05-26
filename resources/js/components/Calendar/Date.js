@@ -1,3 +1,4 @@
+import { globalAPI } from "../../api";
 import moment from "moment";
 import { nanoid } from "nanoid";
 import { useState } from "react";
@@ -6,11 +7,13 @@ import { faCircleXmark, faSquareCheck } from "@fortawesome/free-solid-svg-icons"
 
 export default function Date (props) {
     const plants = props.plants;
+    const calendarDates = props.calendarDates;
 
     const [dateView, setDateView] = useState(false);
     
     const [wateredPlants, setWateredPlants] = useState(plants.map(plant=>{
         return {
+            key:nanoid(),
             name: plant.name,
             id: plant.id,
             selected: false,
@@ -19,6 +22,7 @@ export default function Date (props) {
     
     const [fertilizedPlants, setFertilizedPlants] = useState(plants.map(plant=>{
         return {
+            key:nanoid(),
             name: plant.name,
             id: plant.id,
             selected: false,
@@ -27,13 +31,33 @@ export default function Date (props) {
 
     const [repottedPlants, setRepottedPlants] = useState(plants.map(plant=>{
         return {
+            key:nanoid(),
             name: plant.name,
             id: plant.id,
             selected: false,
         }
     }));
 
-    const fullDate = moment().format('DD.MM.YYYY');
+    const calDatesList = calendarDates.map(cal=>{
+        const list = plants.map(plant=>{
+            const li = [];
+
+            if(cal.plant_id === plant.id){
+                if(cal.watered === props.date) {
+                    li.push(<li>{plant.name} watered</li>)
+                }
+                if(cal.fertilized === props.date) {
+                    li.push(<li>{plant.name} fertilized</li>);
+                }
+                if(cal.repotted === props.date) {
+                    li.push(<li>{plant.name} repotted</li>);
+                }
+            }
+            return li;
+        }); 
+
+        return list;
+    });
 
     const waterOptions = wateredPlants.map(plant => {
         return (
@@ -150,7 +174,19 @@ export default function Date (props) {
                                 <FontAwesomeIcon className="close-icon" icon={faCircleXmark} />
                             </button>
 
-                            <h1>Care diary for {fullDate}</h1>
+                            <h1>Care diary for {moment(props.date).format('DD-MM-YYYY')}</h1>
+
+                            <ul className="cal-list">
+                                {
+                                    calDatesList.map(li =>{
+                                        if(li != null) {
+                                            return li;
+                                        } else {
+                                            return null;
+                                        }
+                                    })
+                                }
+                            </ul>
 
                             <div className="date-options">
                                 <label className="option-label" htmlFor="watered">Watered</label>
@@ -172,8 +208,7 @@ export default function Date (props) {
                     </div>
                 :
                     <button
-                        className="date-btn"
-                        id={props.id} 
+                        className={'date-btn '+props.className}
                         value={props.value}
                         key={`date-btn-${nanoid()}`}
                         onClick={() => setDateView(true)}

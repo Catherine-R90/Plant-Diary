@@ -40,12 +40,11 @@ Route::get('/search', [SearchController::class, 'search']);
 // SCRAPER
 Route::get('/scrape', [ScraperController::class, 'houseplantExpertScraper']);
 
+Route::get('/api/all/plant', [ApiPlantController::class, 'fetchAll']);
 
-Route::get('/api/plant', [ApiPlantController::class, 'fetchAll']);
+Route::get('/api/plant/{id}', [ApiPlantController::class, 'fetchOne']);
 
-// Route::get('/api/plant/{id}', [ApiPlantController::class, 'fetchOne']);
-
-Route::get('api/plant/owned', [ApiPlantController::class, 'fetchOwnedPlants']);
+Route::get('api/owned/plant', [ApiPlantController::class, 'fetchOwnedPlants']);
 
 Route::get('api/calendar', [ApiPlantController::class, 'fetchCalendar']);
 
@@ -54,3 +53,5 @@ Route::post('/api/plant/own/{id}', [ApiPlantController::class, 'ownPlant']);
 Route::post('/api/plant/disown/{id}', [ApiPlantController::class, 'disownPlant']);
 
 Route::post('api/plant/diary', [ApiPlantController::class, 'careDiary']);
+
+Route::post('api/calendar/clear', [ApiPlantController::class, 'clearCalendar']);

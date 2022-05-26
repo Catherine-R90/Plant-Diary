@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faCircleInfo, faBook, faTrashCan, faSquareCheck } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 export default function Plant(props) {
     const [viewInfo, setViewInfo] = useState(false);
+    const [viewDetail, setViewDetail] = useState(false);
     const [viewCareDiary, setViewCareDiary] = useState(false);
     const [watered, setWatered] = useState('');
     const [fertilized, setFertilized] = useState('');
@@ -40,20 +42,47 @@ export default function Plant(props) {
         return setViewCareDiary(false);
     }
 
+    const calendarList = props.calendarDates.map(cal=>{
+        const li = [];
+        if(cal.plant_id === props.id){
+            if(cal.watered) {
+                li.push(<li>Last Watered: {moment(cal.watered).format('DD-MM-YYYY')}</li>);
+            }
+            if(cal.fertilized) {
+                li.push(<li>Last Fertilized: {moment(cal.fertilized).format('DD-MM-YYYY')}</li>);
+            }
+            if(cal.repotted) {
+                li.push(<li>Last Repotted: {moment(cal.repotted).format('DD-MM-YYYY')}</li>);
+            }
+        }
+        return li;
+    })
+
     return (
         <div className="plant">
             {
-                props.viewDetail ?
-                <div className="plant-detail">                 
+                viewDetail ?
+                <div className="plant-detail">
+                    <button className="close" id="plant-detail-close" onClick={() => {
+                        if(viewInfo) {
+                            setViewInfo(false);
+                        }
+                        else if(viewCareDiary) {
+                            setViewCareDiary(false);
+                        }
+                        else if(viewDetail) {
+                            setViewDetail(false);
+                        } 
+                        
+                    }}>
+                        <FontAwesomeIcon className="close-icon" icon={faCircleXmark}/>
+                    </button>
+                    <h1>{props.name}</h1>
+             
                     {
                         viewInfo ?
                         
                         <div className="plant-info">
-                            <h1>Care information for {props.name}</h1>
-                            <button className="close" onClick={() => setViewInfo(false)}>
-                                <FontAwesomeIcon className="close-icon" icon={faCircleXmark}/>
-                            </button>
-
                             <ul>
                                 <li><span className="plant-title">Watering:</span> {props.watering}</li>
                                 <li><span className="plant-title">Fertilizer:</span> {props.fertilizer}</li>
@@ -70,23 +99,32 @@ export default function Plant(props) {
                         viewCareDiary ?
                         <div className="care-diary">
                             <h1>Care Diary for {props.name}</h1>
-                            <button className="close" onClick={() => setViewCareDiary(false)}>
-                                <FontAwesomeIcon className="close-icon" icon={faCircleXmark}/>
-                            </button>
+
+                            <ul className="cal-list">
+                                {
+                                    calendarList.map(li=>{
+                                        if(li != null) {
+                                            return li;
+                                        } else {
+                                            return null;
+                                        }
+                                    })
+                                }
+                            </ul>
 
                             <form onSubmit={(e) => handleFormSubmit(e, props.id, props.name)}>
                                 <div className="label-group">
-                                    <label htmlFor="watered">Last Watered</label>
+                                    <label htmlFor="watered">Update Watered</label>
                                     <input type="date" name="watered" onChange={handleWaterChange} />
                                 </div>
 
                                 <div className="label-group">
-                                    <label htmlFor="fertilized">Last Fertilized</label>
+                                    <label htmlFor="fertilized">Update Fertilized</label>
                                     <input type="date" name="fertilized" onChange={handleFertChange} />
                                 </div>
 
                                 <div className="label-group">
-                                    <label htmlFor="repotted">Last Repotted</label>
+                                    <label htmlFor="repotted">Update Repotted</label>
                                     <input type="date" name="repotted" onChange={handleRepotChange} />
                                 </div>
 
@@ -105,15 +143,6 @@ export default function Plant(props) {
                         viewInfo || viewCareDiary ?
                         null :
                         <div className="plant-options">
-                            <button className="close" onClick={() => props.setViewDetail(false)}>
-                            <FontAwesomeIcon className="close-icon" icon={faCircleXmark}/>
-                                </button>
-                            <div className="text-icon-group">
-                                <h1>{props.name}</h1>
-
-                                {/* TO DO: ADD LAST WATERTERED ETC */}
-                                {/* <h4>Last watered: {props.watered}</h4> */}
-                            </div>
                             <div className="plant-btn-group">
                                 <button onClick={() => setViewInfo(true)}>
                                     Plant Info
@@ -135,7 +164,7 @@ export default function Plant(props) {
 
                 </div> :
                 <div className="plant-button">
-                    <button onClick={() => props.setViewDetail(true)}><h2>{props.name}</h2></button>
+                    <button onClick={() => setViewDetail(true)}><h2>{props.name}</h2></button>
                 </div>
                 
             }
