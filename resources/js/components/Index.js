@@ -8,14 +8,26 @@ import { globalAPI } from "../api.js";
 
 export default function Index() {
     const [ownedPlants, setOwnedPlants] = useState();
-    const [fetchedOwnedPlants, setFetchedOwnedPlants] = useState(false);
+    const [calendarDates, setCalendarDates] = useState();
     const [viewPlantIndex, setViewPlantIndex] = useState(false);
     const [viewCalendar, setViewCalendar] = useState(false);
-    const [viewDetail, setViewDetail] = useState(false);
     const [viewForm, setViewForm] = useState(false);
     const [mQuery, setMQuery] = useState({matches: window.innerWidth > 1023 ? true : false});
 
     const csrf = document.getElementById('csrf').getAttribute('content');
+
+
+    function fetchCalendar() {
+        globalAPI('GET', 'calendar', null, (data) => {
+            assignDates(data);
+        }),(request) => {
+            console.error('Failed to retrieve calendar dates ' + request.response);
+        }
+    }
+
+    function assignDates(data) {
+        setCalendarDates(data);
+    }
 
     function assignOwnedPlants(data) {
         setOwnedPlants(data);
@@ -43,8 +55,7 @@ export default function Index() {
                     setViewPlantIndex={setViewPlantIndex}
                     ownPlant={ownPlant}
                     disownPlant={disownPlant}
-                    viewDetail={viewDetail}
-                    setViewDetail={setViewDetail}
+                    calendarDates={calendarDates}
                 />
             );
         });
@@ -52,8 +63,7 @@ export default function Index() {
     }
     
     function fetchOwnedPlants() {
-        setFetchedOwnedPlants(true);
-        globalAPI('GET', 'plant/owned', 
+        globalAPI('GET', 'owned/plant', 
         null,
         (result, request) => {
             assignOwnedPlants(result);
@@ -71,15 +81,13 @@ export default function Index() {
         globalAPI('POST', 'plant/own/'+id);
         alert(name + " added to owned plants.");
         setViewForm(false);
-        setViewDetail(false);
         const updatedOwned = fetchOwnedPlants();
-        assignOwnedPlantList(updatedOwned);
+        assignOwnedPlants(updatedOwned);
     }
 
     function disownPlant(id, name) {
         globalAPI('POST', 'plant/disown/'+id);
         alert(name + " removed from owned plants.")
-        setViewDetail(false);
         const updatedOwned = fetchOwnedPlants();
         assignOwnedPlants(updatedOwned);
     }
@@ -90,6 +98,14 @@ export default function Index() {
         return () => mediaQuery.removeEventListener("change", setMQuery);
     }, []);
 
+    useEffect(()=>{
+        fetchCalendar();
+    },[]);
+
+    useEffect(()=>{
+        fetchOwnedPlants();
+    },[]);
+
     return (
         <div className="app">
             <nav>
@@ -98,11 +114,6 @@ export default function Index() {
                 </div>
             </nav>
             
-            {
-                fetchedOwnedPlants ? null :
-                fetchOwnedPlants()
-            }
-
             {
                 ownedPlants ?
                 <div className="inner-app">
@@ -130,6 +141,7 @@ export default function Index() {
                                     {
                                         ownedPlants ?
                                         <Calendar 
+                                            calendarDates={calendarDates}
                                             ownedPlants={ownedPlants}
                                             careDiary={careDiary}
                                             setViewCalendar={setViewCalendar}
@@ -163,6 +175,7 @@ export default function Index() {
                             />
                             <Calendar 
                                 ownedPlants={ownedPlants}
+                                calendarDates={calendarDates}
                                 careDiary={careDiary}
                                 setViewCalendar={setViewCalendar}
                                 csrf={csrf}

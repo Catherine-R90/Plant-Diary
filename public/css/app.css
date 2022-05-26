@@ -5,34 +5,17 @@
 .index {
   position: relative;
   padding: 0;
-  margin: 10px;
+  margin: 0;
   background-color: #78b96298;
   overflow: scroll;
+  height: 80vh;
+  width: 45%;
 }
-@media screen and (min-width: 1024px) {
-  .index {
-    width: 45%;
-    min-height: 90%;
-  }
-}
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 992px) {
   .index {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    height: 70vh;
-  }
-}
-.index button.close {
-  border: none;
-  background-color: inherit;
-  color: inherit;
-}
-@media (min-width: 320px) {
-  .index button.close {
-    position: absolute;
-    right: 25px;
-    top: 25px;
   }
 }
 .index h1 {
@@ -42,34 +25,20 @@
   margin: 0;
   width: 100%;
   text-align: center;
+  font-size: 50px;
 }
-@media (min-width: 320px) {
-  .index h1 {
-    font-size: 100px;
-  }
-}
-@media (min-width: 1024px) {
-  .index h1 {
-    font-size: 50px;
-  }
+.index #index-close {
+  top: -78px;
+  left: 290px;
 }
 .index .index-header {
   display: flex;
   color: #0a1f13;
   width: 100%;
   text-align: center;
-}
-@media (min-width: 1024px) {
-  .index .index-header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-@media (min-width: 320px) {
-  .index .index-header {
-    flex-direction: column;
-  }
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 .index .index-header button {
   padding: 0;
@@ -84,31 +53,15 @@
   color: inherit;
   font-family: bodoni;
 }
-@media (min-width: 320px) {
-  .index .index-header button .add {
-    height: 50px;
-    margin-left: 10px;
-  }
-}
-@media (min-width: 1024px) {
-  .index .index-header button .add {
-    height: 30px;
-  }
+.index .index-header button .add {
+  height: 50px;
+  margin-left: 10px;
 }
 .index .index-header button p {
+  font-size: 30px;
   margin-right: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-@media (min-width: 320px) {
-  .index .index-header button p {
-    font-size: 60px;
-  }
-}
-@media (min-width: 1024px) {
-  .index .index-header button p {
-    font-size: 30px;
-  }
 }
 .index .plantlist {
   display: flex;
@@ -142,16 +95,6 @@
   text-align: center;
   border: none;
 }
-@media (min-width: 320px) {
-  .index .plantlist .plant-button button {
-    font-size: 40px;
-  }
-}
-@media (min-width: 1024px) {
-  .index .plantlist .plant-button button {
-    font-size: 20px;
-  }
-}
 
 #add {
   border: none;
@@ -166,61 +109,38 @@
   .calendar-container {
     margin-left: 5%;
     margin-right: 5%;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
   }
 }
 .calendar {
   padding: 0;
-  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #081603f7;
   color: #c2ffc2f3;
+  width: 45%;
+  font-size: 35px;
 }
-@media (min-width: 320px) {
+@media (max-width: 992px) {
   .calendar {
-    font-size: 50px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
-@media (min-width: 1024px) {
-  .calendar {
-    width: 45%;
-    font-size: 35px;
-  }
-}
-@media (min-width: 320px) {
-  .calendar button.close {
-    position: absolute;
-    top: 340px;
-    right: 60px;
-  }
-}
-@media (min-width: 1024px) {
-  .calendar button.close {
-    position: relative;
-    top: 10px;
-    left: 380px;
-  }
+.calendar #calendar-close {
+  top: 10px;
+  left: 250px;
 }
 .calendar #current-date {
   font-family: columbia;
   text-align: center;
   padding: 0;
-}
-@media (min-width: 320px) and (max-width: 480px) {
-  .calendar #current-date {
-    font-size: 80px;
-    margin: 20px 0px 20px 0px;
-  }
-}
-@media (min-width: 1024px) {
-  .calendar #current-date {
-    font-size: 30px;
-    margin: 10px 0px 10px 0px;
-  }
+  font-size: 30px;
+  margin: 10px 0px 10px 0px;
 }
 .calendar .cal-btns {
   display: flex;
@@ -231,27 +151,12 @@
 .calendar .cal-btns button {
   background-color: inherit;
   color: inherit;
-}
-@media (min-width: 320px) {
-  .calendar .cal-btns button {
-    padding: 10px;
-    font-size: 50px;
-    border-left: 5px solid #c2ffc2f3;
-    border-top: 5px solid #c2ffc2f3;
-    border-right: none;
-    border-bottom: none;
-    border-radius: 2%;
-  }
-}
-@media (min-width: 1024px) {
-  .calendar .cal-btns button {
-    font-size: 20px;
-    border-left: 1px solid #c2ffc2f3;
-    border-top: 1px solid #c2ffc2f3;
-    border-bottom: 0.5px solid #c2ffc2f3;
-    border-right: 0.5px solid #c2ffc2f3;
-    border-radius: 2%;
-  }
+  font-size: 15px;
+  border-left: 1px solid #c2ffc2f3;
+  border-top: 1px solid #c2ffc2f3;
+  border-bottom: 0.5px solid #c2ffc2f3;
+  border-right: 0.5px solid #c2ffc2f3;
+  border-radius: 2%;
 }
 .calendar .year, .calendar .month {
   display: flex;
@@ -261,32 +166,15 @@
   padding: 0;
   margin: 0;
 }
-@media (min-width: 320px) {
-  .calendar .year h3, .calendar .month h3 {
-    margin: 20px;
-    font-size: 50px;
-  }
-}
-@media (min-width: 1024px) {
-  .calendar .year h3, .calendar .month h3 {
-    font-size: 25px;
-    margin: 10px;
-  }
+.calendar .year h3, .calendar .month h3 {
+  font-size: 25px;
+  margin: 10px;
 }
 .calendar .date-group {
   padding: 0;
   margin-left: auto;
   margin-right: auto;
-}
-@media (min-width: 320px) and (max-width: 480px) {
-  .calendar .date-group {
-    margin-top: 30px;
-  }
-}
-@media (min-width: 320px) {
-  .calendar .date-group {
-    margin-top: 15px;
-  }
+  margin-top: 15px;
 }
 .calendar .date-group table {
   display: flex;
@@ -294,49 +182,70 @@
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-}
-@media (min-width: 320px) {
-  .calendar .date-group table {
-    height: 80%;
-    width: 100%;
-  }
+  margin-bottom: 20px;
 }
 .calendar .date-group table tbody tr td .date .date-btn {
   border: 1px solid #081603f7;
   text-align: center;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
 }
-@media (min-width: 320px) {
-  .calendar .date-group table tbody tr td .date .date-btn {
-    line-height: 70px;
-    height: 70px;
-    width: 70px;
-    font-size: 50px;
-  }
-}
-@media (min-width: 1024px) {
-  .calendar .date-group table tbody tr td .date .date-btn {
-    line-height: 30px;
-    height: 30px;
-    width: 30px;
-    font-size: 20px;
-  }
-}
-.calendar .date-group #not-today {
+.calendar .date-group .not-today {
   background: #c2ffc2f3;
   color: #081603f7;
 }
-.calendar .date-group #today {
+.calendar .date-group .today {
   background: #081603f7;
   color: #c2ffc2f3;
 }
-@media (min-width: 1024px) {
-  .calendar .calendar-list {
-    font-size: 15px;
-  }
+.calendar .date-group .watered {
+  background-color: #2bb297;
+}
+.calendar .date-group .fertilized {
+  background-color: #8d3b1b;
+}
+.calendar .date-group .repotted {
+  background-color: #53ae0d;
+}
+.calendar .date-group .watered.fertilized {
+  background: linear-gradient(to right, #2bb297, #8d3b1b);
+}
+.calendar .date-group .watered.repotted {
+  background: linear-gradient(to right, #2bb297, #53ae0d);
+}
+.calendar .date-group .fertilized.repotted {
+  background: linear-gradient(to right, #8d3b1b, #53ae0d);
+}
+.calendar .date-group .fertilized.repotted.watered {
+  background: linear-gradient(to right, #2bb297, #8d3b1b, #53ae0d);
+}
+.calendar .calendar-list {
+  font-size: 15px;
+}
+.calendar .key {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  position: relative;
+  left: -200px;
+  bottom: 150px;
+}
+.calendar .key #watered-key {
+  color: #2bb297;
+}
+.calendar .key #fert-key {
+  color: #8d3b1b;
+}
+.calendar .key #repot-key {
+  color: #53ae0d;
 }
 
 .form-container {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 .form-container .form {
   background-color: #081603f7;
@@ -344,41 +253,36 @@
   z-index: 10;
   position: fixed;
   overflow-y: scroll;
+  height: 80%;
+  top: 125px;
+  left: 0;
+  right: 0;
+  border: 1px solid #c2ffc2;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
-@media (min-width: 1024px) {
+@media (max-width: 992px) {
   .form-container .form {
-    top: 125px;
-    border: 1px solid #c2ffc2;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-}
-@media (min-width: 320px) and (max-width: 480px) {
-  .form-container .form {
-    left: 0;
-    right: 0;
-    top: 300px;
-    width: 80%;
-    height: 70%;
-    margin-left: 10%;
-    margin-right: 10%;
-    overflow-y: scroll;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 }
 .form-container .form #form-close {
-  height: 50px;
-  width: 50px;
+  top: 10px;
+  left: 90%;
+}
+@media (max-width: 992px) {
+  .form-container .form #form-close {
+    left: 85%;
+  }
 }
 .form-container .form input[type=text] {
   margin: 10px;
-}
-@media (min-width: 320px) and (max-width: 480px) {
-  .form-container .form input[type=text] {
-    width: 80%;
-    height: 55px;
-    font-size: 45px;
-  }
+  width: 80%;
+  height: 30px;
+  font-size: 25px;
 }
 .form-container .form .search-cancel {
   display: flex;
@@ -401,16 +305,7 @@
   color: inherit;
   margin: 5px;
   padding: 5px;
-}
-@media (min-width: 320px) {
-  .form-container .form button {
-    font-size: 50px;
-  }
-}
-@media (min-width: 1024px) {
-  .form-container .form button {
-    font-size: 25px;
-  }
+  font-size: 25px;
 }
 .form-container .form .results {
   display: flex;
@@ -427,7 +322,7 @@
     width: 30px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
   .form-container .form .results .leaf-icon {
     height: 20px;
     width: 20px;
@@ -443,11 +338,11 @@
   margin: 10px;
 }
 .plant .plant-detail {
-  z-index: 10;
+  z-index: 20;
   position: fixed;
   width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #081603fa;
   color: #adda9e;
   overflow-y: scroll;
@@ -455,29 +350,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: 75%;
+  top: 120px;
 }
-@media (min-width: 320px) {
+@media (max-width: 992px) {
   .plant .plant-detail {
-    top: 300px;
-    height: 80%;
-  }
-}
-@media (min-width: 1024px) {
-  .plant .plant-detail {
-    top: 120px;
-    height: 75%;
-  }
-}
-.plant .plant-detail button.close {
-  border: none;
-  background-color: inherit;
-  color: inherit;
-}
-@media (min-width: 320px) {
-  .plant .plant-detail button.close {
-    position: absolute;
-    right: 25px;
-    top: 25px;
+    height: 90%;
   }
 }
 .plant .plant-detail h1 {
@@ -486,17 +364,16 @@
   text-align: center;
   margin: 0;
   padding: 0;
+  color: #adda9e;
+  font-size: 45px;
 }
-@media (min-width: 320px) {
-  .plant .plant-detail h1 {
-    margin-top: 25px;
-    font-size: 100px;
-    margin-top: 10px;
-  }
+.plant .plant-detail #plant-detail-close {
+  top: 10px;
+  left: 550px;
 }
-@media (min-width: 1024px) {
-  .plant .plant-detail h1 {
-    font-size: 45px;
+@media (max-width: 992px) {
+  .plant .plant-detail #plant-detail-close {
+    left: 270px;
   }
 }
 .plant .plant-detail .plant-btn-group {
@@ -513,7 +390,7 @@
     height: 50px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
   .plant .plant-detail .plant-btn-group .plant-icon {
     height: 30px;
   }
@@ -523,17 +400,7 @@
   color: #adda9e;
   background-color: inherit;
   border: none;
-}
-@media (min-width: 320px) {
-  .plant .plant-detail .plant-btn-group button {
-    padding: 5px;
-    font-size: 60px;
-  }
-}
-@media (min-width: 1024px) {
-  .plant .plant-detail .plant-btn-group button {
-    font-size: 35px;
-  }
+  font-size: 35px;
 }
 .plant .plant-detail .care-diary, .plant .plant-detail .plant-info {
   display: flex;
@@ -541,49 +408,26 @@
   align-items: center;
   justify-content: center;
 }
+.plant .plant-detail .plant-info {
+  font-size: 25px;
+}
 .plant .plant-detail .plant-info .plant-title {
   display: block;
 }
-@media (min-width: 320px) {
-  .plant .plant-detail .plant-info {
-    font-size: 50px;
-  }
-  .plant .plant-detail .plant-info li {
-    margin-top: 30px;
-  }
-}
-@media (min-width: 1024px) {
-  .plant .plant-detail .plant-info {
-    font-size: 25px;
-  }
+.plant .plant-detail .care-diary ul.cal-list {
+  padding: 0;
+  margin: 10px;
+  text-align: center;
 }
 .plant .plant-detail .care-diary form {
   text-align: center;
-}
-@media (min-width: 320px) {
-  .plant .plant-detail .care-diary form {
-    font-size: 70px;
-  }
-}
-@media (min-width: 1024px) {
-  .plant .plant-detail .care-diary form {
-    font-size: 35px;
-  }
+  font-size: 20px;
 }
 .plant .plant-detail .care-diary form input[type=date] {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-@media (min-width: 320px) {
-  .plant .plant-detail .care-diary form input[type=date] {
-    font-size: 40px;
-  }
-}
-@media (min-width: 1024px) {
-  .plant .plant-detail .care-diary form input[type=date] {
-    font-size: 20px;
-  }
+  font-size: 18px;
 }
 
 @font-face {
@@ -593,29 +437,16 @@
 .diary-date {
   z-index: 10;
   left: 0;
-  right: 0;
+  top: 0;
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
   position: fixed;
   overflow-y: scroll;
+  height: 75%;
+  top: 120px;
   background-color: #ade2adf3;
   color: #0f2905f7;
-}
-@media (min-width: 320px) {
-  .diary-date {
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
-    font-size: 50px;
-    top: 300px;
-  }
-}
-@media (min-width: 1024px) {
-  .diary-date {
-    height: 75%;
-    top: 120px;
-  }
 }
 .diary-date h1 {
   margin: 0;
@@ -623,40 +454,26 @@
   width: 100%;
   text-align: center;
   font-family: columbia;
+  font-size: 35px;
 }
-@media (min-width: 320px) {
-  .diary-date h1 {
-    font-size: 60px;
-  }
-}
-@media (min-width: 1024px) {
-  .diary-date h1 {
-    font-size: 35px;
-  }
+.diary-date ul.cal-list {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 18px;
 }
 .diary-date #diary-close {
   position: relative;
   top: 10px;
+  left: 95%;
 }
-@media (min-width: 320px) {
+@media (max-width: 992px) {
   .diary-date #diary-close {
     left: 90%;
   }
 }
-@media (min-width: 1024px) {
-  .diary-date #diary-close {
-    left: 95%;
-  }
-}
-@media (min-width: 320px) {
-  .diary-date label {
-    font-size: 45px;
-  }
-}
-@media (min-width: 1024px) {
-  .diary-date label {
-    font-size: 25px;
-  }
+.diary-date label {
+  font-size: 25px;
 }
 .diary-date .date-options {
   display: flex;
@@ -664,34 +481,16 @@
   align-items: center;
   justify-content: center;
 }
-@media (min-width: 320px) {
-  .diary-date .date-options input[type=checkbox] {
-    height: 40px;
-    width: 40px;
-  }
-}
-@media (min-width: 1024px) {
-  .diary-date .date-options input[type=checkbox] {
-    height: auto;
-    width: auto;
-  }
+.diary-date .date-options input[type=checkbox] {
+  height: 20px;
+  width: 20px;
 }
 .diary-date .date-options button.add, .diary-date .date-options .confirm-icon {
   border: none;
   color: inherit;
   background-color: inherit;
-}
-@media (min-width: 320px) {
-  .diary-date .date-options button.add, .diary-date .date-options .confirm-icon {
-    height: 60px;
-    width: 60px;
-  }
-}
-@media (min-width: 1024px) {
-  .diary-date .date-options button.add, .diary-date .date-options .confirm-icon {
-    height: 30px;
-    width: 30px;
-  }
+  height: 30px;
+  width: 30px;
 }
 .diary-date .option-label {
   margin-top: 20px;
@@ -706,21 +505,17 @@
   src: url(/fonts/BodoniflfRoman-vmAD.ttf?436dfb896540381b5a5f9bd325bc510c) format("truetype");
 }
 body {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   font-family: bodoni;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
-}
-@media (min-width: 1024px) {
-  body {
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
 }
 body ul {
   list-style: none;
@@ -733,20 +528,18 @@ body .app {
   padding: 0;
   margin: 0;
 }
-@media (min-width: 1024px) {
-  body .inner-app {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
+body .inner-app {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 @media (min-width: 320px) {
   body {
     background-image: url("/images/mobile-background.png");
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
   body {
     background-image: url("/images/background.png");
   }
@@ -759,31 +552,20 @@ body button.confirm {
   background: inherit;
   color: inherit;
 }
-@media (min-width: 320px) {
-  body button.confirm .confirm-icon {
-    height: 80px;
-  }
-}
-@media (min-width: 1024px) {
-  body button.confirm .confirm-icon {
-    height: 35px;
-  }
+body button.confirm svg {
+  height: 35px;
 }
 body button.close {
   border: none;
   background-color: inherit;
   color: inherit;
+  height: 40px;
+  position: relative;
+  z-index: inherit;
 }
-@media (min-width: 320px) {
-  body button.close .close-icon {
-    height: 60px;
-    width: 60px;
-  }
-}
-@media (min-width: 1024px) {
-  body button.close .close-icon {
-    height: 30px;
-  }
+body button.close svg {
+  position: relative;
+  height: 40px;
 }
 body nav #logo {
   width: -webkit-fit-content;
@@ -793,15 +575,8 @@ body nav #logo {
   margin-right: auto;
   margin-top: 20px;
 }
-@media (min-width: 320px) {
-  body nav #logo img {
-    height: 300px;
-  }
-}
-@media (min-width: 1024px) {
-  body nav #logo img {
-    height: 100px;
-  }
+body nav #logo img {
+  height: 100px;
 }
 body .index-button {
   border: none;
@@ -809,14 +584,14 @@ body .index-button {
   color: #0a100a;
   width: 100%;
 }
-@media (min-width: 320px) {
+@media (min-width: 992px) {
   body .index-button {
     font-size: 90px;
-    margin-top: 20px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 320px) {
   body .index-button {
     font-size: 50px;
+    margin-top: 20px;
   }
 }

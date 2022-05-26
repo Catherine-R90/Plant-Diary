@@ -10,90 +10,72 @@ import { globalAPI } from '../../api';
 
 export default function Calendar(props) {
     const [date, setDate] = useState(moment());
-    const [calendarDates, setCalendarDates] = useState();
-    const [fetchedDates, setFetchedDates] = useState(false);
+    const [mQuery, setMQuery] = useState({matches: window.innerWidth > 1023 ? true : false});
     
+    const calendarDates=props.calendarDates
     const day = moment(date).date();
     const year = moment(date).year();
 
-    // FETCH CALENDAR & ASSIGN DATES
-    function assignDates(data) {
-        setCalendarDates(data);
-    }
-
-    function fetchCalendar() {
-        setFetchedDates(true);
-        globalAPI('GET', 'calendar', null, (data) => {
-            assignDates(data);
-        }),(request) => {
-            console.error('Failed to retrieve calendar dates ' + request.response);
-        }
-    }
-
-    let calendarList;
-
-    if(calendarDates) {
-        calendarList = calendarDates.map(day =>{
-            const data = props.ownedPlants.map(plant=>{
-                if(plant.id == day.plant_id) {
-                    return (
-                        <div className='calendar-list' key={'cal-list'+nanoid()}>
-                            <li>{plant.name}</li>
-                            <li>{day.watered}</li>
-                            <li>{day.fertilized}</li>
-                            <li>{day.repotted}</li>
-                        </div>
-                    );
-                }
-            });
-            return data;
-        });
-    }
-
     // MAP DATES TO BUTTONS
-    function mapDates(date) {
-        const month = moment(date).month();
-
+    function mapDates(date) {   
+        let month = moment(date).month()+1;
+        
         const year = moment(date).year();
 
         const days = moment(date).daysInMonth()+1;
         
         const daysArray = Array.from(Array(days).keys()).slice(1);
 
-        const today = moment();
-        
-        const dates = daysArray.map(date => {
-            if(props.ownedPlants) {
-                if(date == today.date() && month == today.month() && year == today.year()) {
-                    return (
-                        <Date 
-                            value={date}
-                            month={month}
-                            year={year}
-                            date={year+"-"+month+"-"+date}
-                            id="today"
-                            key={"date-"+nanoid()}
-                            plants={props.ownedPlants}
-                            careDiary={props.careDiary}
-                            csrf={props.csrf}
-                        />
-                    );
-                } else {
-                    return (
-                        <Date 
-                            value={date}
-                            month={month}
-                            year={year}
-                            date={year+"-"+month+"-"+date}
-                            id="not-today"
-                            key={"date-"+nanoid()}
-                            plants={props.ownedPlants}
-                            careDiary={props.careDiary}
-                            csrf={props.csrf}
-                        />
-                    );
-                }
+        const today = moment().format('YYYY-MM-DD');
+
+        const dates = daysArray.map(day => {
+            let dayNum = day;
+
+            let monthNum = month;
+
+            if(monthNum < 10) {
+                monthNum = `0${monthNum}`;
             }
+            if(dayNum < 10) {
+                dayNum = `0${dayNum}`;
+            }
+
+            const date = `${year}-${monthNum}-${dayNum}`;
+
+            const className = [];
+
+            if(date === today) {
+                className.push('today');
+            } else {
+                className.push('not-today');
+            }
+
+            calendarDates.map(cal=>{
+                if(cal.watered === date) {
+                    className.push('watered');
+                }
+                if(cal.fertilized === date) {
+                    className.push('fertilized');
+                }
+                if(cal.repotted === date) {
+                    className.push('repotted');
+                }
+            });
+
+            return (
+                <Date 
+                    value={dayNum}
+                    month={month}
+                    year={year}
+                    date={date}
+                    key={"date-"+nanoid()}
+                    plants={props.ownedPlants}
+                    careDiary={props.careDiary}
+                    csrf={props.csrf}
+                    calendarDates={calendarDates}
+                    className={className.join(' ')}
+                />
+            );
         });
 
         let size = 7;
@@ -101,7 +83,7 @@ export default function Calendar(props) {
         for(let i = 0; i < dates.length; i+= size) {
             body.push(dates.slice(i, i+size));
         }
-        
+
         return <Table body={body} />
     }
 
@@ -121,16 +103,22 @@ export default function Calendar(props) {
         setDate(d => d.clone().add(1, "month"));
     };
 
+    useEffect(() => {
+        let mediaQuery = window.matchMedia("(min-width: 1024)");
+        mediaQuery.addEventListener("change", setMQuery);
+        return () => mediaQuery.removeEventListener("change", setMQuery);
+    }, []);
 
     return (
         <div className="calendar">
             {
-                fetchedDates ? null : fetchCalendar()
+                mQuery && !mQuery.matches ? 
+                <button className="close" id="calendar-close" onClick={() => props.setViewCalendar(false)}>
+                    <FontAwesomeIcon className="close-icon" icon={faCircleXmark}/>
+                </button>
+                :
+                null
             }
-
-            <button className="close" onClick={() => props.setViewCalendar(false)}>
-                <FontAwesomeIcon className="close-icon" icon={faCircleXmark}/>
-            </button>
 
             <h1 id="current-date">Current Date: {moment().format('DD MMMM YYYY')}</h1>
             
@@ -167,6 +155,15 @@ export default function Calendar(props) {
             <div className="date-group">
                 {mapDates(date)}
             </div>
+
+            
+            <ul className='key'>
+                <li>Key:</li>
+                <li id='watered-key'>Watered</li>
+                <li id='fert-key'>Fertilized</li>
+                <li id='repot-key'>Repotted</li>
+            </ul>
+            
         </div>
     ); 
 }

@@ -38,7 +38,7 @@ export default function Form(props) {
 
     function fetchPlants() {
         setFetchedPlants(true);
-        globalAPI('GET', 'plant', 
+        globalAPI('GET', 'all/plant', 
         null,
         (data) => {
             assignPlants(data)
@@ -87,7 +87,7 @@ export default function Form(props) {
                 fetchPlants()
             }
 
-            <button className="close" onClick={() => props.setViewForm(false)}>
+            <button id="form-close" className="close" onClick={() => props.setViewForm(false)}>
                 <FontAwesomeIcon className="close-icon" id="form-close" icon={faCircleXmark} />
             </button>
 

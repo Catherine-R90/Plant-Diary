@@ -1,6 +1,6 @@
 $layout-breakout-small: 320px;
-$layout-breakout-med: 480px;
-$layout-breakout-large: 1024px;
+$layout-breakout-med: 768px;
+$layout-breakout-large: 992px;
 @font-face {
     font-family: 'columbia';
     src: url('../fonts/columbia.ttf') format('truetype');
@@ -9,31 +9,16 @@ $layout-breakout-large: 1024px;
 .index {    
     position: relative;
     padding: 0;
-    margin: 10px;
+    margin: 0;
     background-color: #78b96298;
     overflow: scroll;
-
-    @media screen and (min-width:$layout-breakout-large) {
-        width: 45%;
-        min-height: 90%;
-    }
-    @media screen and (min-width: $layout-breakout-small) and (max-width: $layout-breakout-med) {
+    height: 80vh;
+    width: 45%;
+    
+    @media (max-width: $layout-breakout-large){
         width: 90%;
         margin-left: auto;
         margin-right: auto;
-        height: 70vh;
-    }
-
-    button.close {
-        border:none;
-        background-color: inherit;
-        color:inherit;
-
-        @media(min-width: $layout-breakout-small) {
-            position: absolute;
-            right: 25px;
-            top: 25px;
-        }
     }
 
     h1 {
@@ -43,12 +28,12 @@ $layout-breakout-large: 1024px;
         margin:0;
         width: 100%;
         text-align: center;
-        @media (min-width: $layout-breakout-small) {
-            font-size: 100px;
-        }
-        @media(min-width:$layout-breakout-large) {
-            font-size: 50px;
-        }
+        font-size: 50px;
+    }
+
+    #index-close {
+        top: -78px;
+        left: 290px;   
     }
 
     .index-header {
@@ -56,15 +41,9 @@ $layout-breakout-large: 1024px;
         color: #0a1f13;
         width: 100%;
         text-align: center;
-
-        @media (min-width: $layout-breakout-large) {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
-        @media (min-width:$layout-breakout-small) {
-            flex-direction: column;
-        }
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
 
         button {
             padding: 0;
@@ -80,21 +59,12 @@ $layout-breakout-large: 1024px;
             font-family: bodoni;
             
             .add {
-                @media (min-width: $layout-breakout-small) {
-                    height: 50px;
-                    margin-left: 10px;
-                }
-                @media(min-width: $layout-breakout-large) {
-                    height: 30px;
-                }
+                height: 50px;
+                margin-left: 10px;
             }
+
             p {
-                @media(min-width:$layout-breakout-small) {
-                    font-size: 60px;
-                }
-                @media(min-width:$layout-breakout-large) {
-                    font-size: 30px;
-                }
+                font-size: 30px;
                 margin-right: 5px;
                 margin-top: 10px;
                 margin-bottom: 10px;
@@ -132,14 +102,6 @@ $layout-breakout-large: 1024px;
                 color:#78b96298;
                 text-align: center;
                 border:none;
-
-                @media (min-width:$layout-breakout-small) {
-                    font-size: 40px;
-                }
-
-                @media(min-width: $layout-breakout-large) {
-                    font-size: 20px;
-                }
             }
         }
     }    

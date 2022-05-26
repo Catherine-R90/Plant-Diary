@@ -1,4 +1,3 @@
-import { globalAPI } from "../api.js";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +22,7 @@ export default function PlantIndex(props) {
 
                 {
                     mQuery && !mQuery.matches ? 
-                    <button  className="close" onClick={() => props.setViewPlantIndex(false)}>
+                    <button  className="close" id="index-close" onClick={() => props.setViewPlantIndex(false)}>
                         <FontAwesomeIcon className="close-icon" icon={faCircleXmark} />
                     </button> :
                     null
@@ -49,7 +48,6 @@ export default function PlantIndex(props) {
 
             <div className="plantList">
                 {props.ownedPlants ? props.assignOwnedPlantsList(props.ownedPlants) : null}
-                {/* {props.ownedPlantList == null ? <h1>No plants owned. Time to start growing!</h1> : null} */}
             </div>
 
         </div>

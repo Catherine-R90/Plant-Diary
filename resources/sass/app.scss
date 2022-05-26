@@ -6,24 +6,22 @@
 @use "diary-date";
 
 $layout-breakout-small: 320px;
-$layout-breakout-med: 480px;
-$layout-breakout-large: 1024px;
+$layout-breakout-med: 768px;
+$layout-breakout-large: 992px;
+
 @font-face {
     font-family: 'bodoni';
     src: url("../fonts/BodoniflfRoman-vmAD.ttf") format('truetype');
 }
 body {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: bodoni;
-
-    @media(min-width:$layout-breakout-large) {
-        overflow-y: hidden;
-        display:flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
+    overflow-y: hidden;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
 
     ul {
         list-style: none;
@@ -37,12 +35,10 @@ body {
     }
 
     .inner-app{
-        @media(min-width: $layout-breakout-large){
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     background-size: cover;
@@ -66,13 +62,8 @@ body {
         background:inherit;
         color:inherit;
 
-        .confirm-icon {
-            @media(min-width:$layout-breakout-small) {
-                height: 80px;
-            }
-            @media(min-width: $layout-breakout-large) {
-                height: 35px;
-            }
+        svg {
+            height: 35px;
         }
     }
     
@@ -80,14 +71,13 @@ body {
         border: none;
         background-color: inherit;
         color: inherit;
-        .close-icon {
-            @media(min-width:$layout-breakout-small) {
-                height: 60px;
-                width: 60px;
-            }
-            @media(min-width:$layout-breakout-large) {
-                height: 30px;
-            }
+        height: 40px;
+        position: relative;
+        z-index: inherit;
+
+        svg {
+            position: relative;
+            height: 40px;
         }
     }
 
@@ -98,12 +88,7 @@ body {
             margin-right: auto;
             margin-top: 20px;
             img {  
-                @media(min-width: $layout-breakout-small) {
-                    height: 300px;
-                }
-                @media (min-width: $layout-breakout-large) {
-                    height: 100px;
-                }
+                height: 100px;
             }
         } 
     }
@@ -114,12 +99,12 @@ body {
         color:rgb(10, 16, 10);
         width: 100%;
         
-        @media(min-width: $layout-breakout-small) {
+        @media(min-width: $layout-breakout-large) {
             font-size: 90px;
-            margin-top: 20px;
         }
-        @media(min-width:$layout-breakout-large) {
+        @media(min-width:$layout-breakout-small) {
             font-size: 50px;
+            margin-top: 20px;
         }
     }
 }

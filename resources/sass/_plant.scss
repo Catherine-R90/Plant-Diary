@@ -1,6 +1,7 @@
 $layout-breakout-small: 320px;
-$layout-breakout-med: 480px;
-$layout-breakout-large: 1024px;
+$layout-breakout-med: 768px;
+$layout-breakout-large: 992px;
+
 @font-face {
     font-family: columbia;
     src: url("../fonts/columbia.ttf");
@@ -11,11 +12,11 @@ $layout-breakout-large: 1024px;
     margin: 10px;
 
     .plant-detail {
-        z-index: 10;
+        z-index: 20;
         position: fixed;
         width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: auto;
+        margin-right: auto;
         background-color: #081603fa;
         color:#adda9e;
         overflow-y: scroll;
@@ -23,28 +24,13 @@ $layout-breakout-large: 1024px;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        height:75%;
+        top: 120px;
 
-        @media(min-width:$layout-breakout-small) {
-            top: 300px;
-            height: 80%;
+        @media(max-width:$layout-breakout-large) {
+            height: 90%;
         }
 
-        @media(min-width: $layout-breakout-large) {
-            top: 120px;
-            height:75%;
-        }
-
-        button.close {
-            border:none;
-            background-color: inherit;
-            color:inherit;
-    
-            @media(min-width: $layout-breakout-small) {
-                position: absolute;
-                right: 25px;
-                top: 25px;
-            }
-        }
 
         h1 {
             width: 100%;
@@ -52,13 +38,16 @@ $layout-breakout-large: 1024px;
             text-align: center;
             margin: 0;
             padding: 0;
-            @media(min-width:$layout-breakout-small) {
-                margin-top: 25px;
-                font-size: 100px;
-                margin-top: 10px;
-            }
-            @media(min-width:$layout-breakout-large) {
-                font-size: 45px;
+            color: #adda9e;
+            font-size: 45px;
+        }
+
+        #plant-detail-close {
+            top: 10px;
+            left: 550px;
+
+            @media(max-width:$layout-breakout-large){
+                left: 270px;
             }
         }
 
@@ -85,15 +74,7 @@ $layout-breakout-large: 1024px;
                 color: #adda9e;
                 background-color: inherit;
                 border: none;
-                
-                @media(min-width:$layout-breakout-small) {
-                    padding: 5px;
-                    font-size: 60px;
-                }
-
-                @media(min-width: $layout-breakout-large) {
-                    font-size: 35px;
-                }
+                font-size: 35px;
             }
         }
 
@@ -109,41 +90,24 @@ $layout-breakout-large: 1024px;
                 display: block;
             }
 
-            @media(min-width: $layout-breakout-small) {
-                font-size: 50px;
-                li {
-                    margin-top: 30px;
-                }
-            }
-
-            @media(min-width: $layout-breakout-large) {
-                font-size: 25px;
-            }
+            font-size: 25px;
         }
 
         .care-diary {
+            ul.cal-list {
+                padding: 0;
+                margin: 10px;
+                text-align: center;
+            }
             form {
                 text-align: center;
-                @media(min-width:$layout-breakout-small) {
-                    font-size: 70px;
-                }
-
-                @media(min-width: $layout-breakout-large) {
-                    font-size: 35px;
-                }
+                font-size: 20px;
 
                 input[type=date] {
                     display:block;
                     margin-left: auto;
                     margin-right: auto;
-
-                    @media(min-width:$layout-breakout-small) {
-                        font-size: 40px;
-                    }
-
-                    @media(min-width: $layout-breakout-large) {
-                        font-size: 20px;
-                    }
+                    font-size: 18px;
                 }
             }
         }
